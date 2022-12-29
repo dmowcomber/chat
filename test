@@ -1,0 +1,22 @@
+#!/bin/bash
+
+curl localhost:8080/room/add -d test -i         
+echo
+echo
+
+curl localhost:8080/room/user/add -d test,dustin
+echo
+echo
+
+curl localhost:8080/room/messages -d test -i
+echo
+echo
+
+curl localhost:8080/room/message/add -d test,dustin,hello -i
+echo
+echo
+
+curl localhost:8080/room/messages -d test -i
+echo
+echo
+
