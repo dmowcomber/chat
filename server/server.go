@@ -12,9 +12,7 @@ import (
 )
 
 type Server struct {
-	port int
-	// list of users
-	// list of rooms
+	port         int
 	usersHandler *usersHandler
 	roomHandler  *roomHandler
 }
@@ -25,7 +23,7 @@ func NewServer(port int) *Server {
 	}
 	rooms := NewRooms()
 	return &Server{
-		port: 8080,
+		port: port,
 		usersHandler: &usersHandler{
 			users: users,
 		},
@@ -59,6 +57,7 @@ type usersHandler struct {
 	users *Users
 }
 
+// TODO: update endpoints to read and write json
 func (uh *usersHandler) GetAll(w http.ResponseWriter, r *http.Request) {
 	var users string
 	var i = 0
@@ -93,7 +92,6 @@ func (uh *usersHandler) Add(w http.ResponseWriter, r *http.Request) {
 }
 
 type roomHandler struct {
-	// TODO: need to split the handler struct from the yet to be created data struct...
 	rooms *Rooms
 	users *Users
 }
